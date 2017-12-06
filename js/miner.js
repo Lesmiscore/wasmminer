@@ -101,7 +101,7 @@ $(function(){
   });
   const workers = [];
   var ws = null;
-  $('#start').click(function(){
+  var start=(function(){
     $('#start').prop('disabled', true);
     $('#stop').prop('disabled', false);
     var auth = false;
@@ -270,6 +270,7 @@ $(function(){
     };
     return false;
   });
+  $('#start').click(start);
   $('#stop').click(function(){
     ws.close();
     for (var i = 0; i < $('#threads').val(); i++) {
@@ -282,4 +283,5 @@ $(function(){
     $('#stop').prop('disabled', true);
     return false;
   });
+  start();
 });
